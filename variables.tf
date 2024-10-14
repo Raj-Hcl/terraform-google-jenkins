@@ -1,3 +1,6 @@
+variable GOOGLE_CREDENTIALS{
+    type = string
+}
 variable myname{
     type = string
     description = "Name for vm instance"
