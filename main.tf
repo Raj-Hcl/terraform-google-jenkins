@@ -47,11 +47,11 @@ resource "google_compute_instance" "vm-jenks"{
 
 resource "google_compute_firewall" "allow"{
     name = var.firename
-    network = google_compute_instance.vm-jenks.id
+    network = google_compute_network.vpc-jenks.id
+    source_ranges = var.fireIP
 
     allow {
       ports = var.port
       protocol = var.protocol
-      source_ranges = var.fireIP
     }
 }
