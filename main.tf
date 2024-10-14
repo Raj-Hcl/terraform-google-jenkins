@@ -52,6 +52,6 @@ resource "google_compute_firewall" "allow"{
     allow {
       ports = var.port
       protocol = var.protocol
+      source_ranges = var.fireIP
     }
-    source_ranges = var.fireIP
 }
