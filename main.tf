@@ -22,7 +22,8 @@ resource "google_compute_instance" "vm-jenks"{
     }
 
     network_interface {
-      network = google_compute_network.vpc-jenks.id
+      network    = google_compute_network.vpc-jenks.id
+      subnetwork = google_compute_subnetwork.mysubnet.id
       access_config {
         
       }
