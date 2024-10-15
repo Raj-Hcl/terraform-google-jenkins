@@ -29,12 +29,11 @@ resource "google_compute_instance" "vm-jenks"{
       }
     }
 
-    metadata_startup_script = 
-    #Update the package list
+    metadata_startup_script = <<-EOT
+    #!/bin/bash
+    # Update the package list
     sudo apt-get update
-
-    mkdir jenks
-
+    
     # Install Java (required for Jenkins)
     sudo apt-get install -y openjdk-11-jdk
     
@@ -44,7 +43,15 @@ resource "google_compute_instance" "vm-jenks"{
     sudo apt-get update
     sudo apt-get install -y jenkins
     
+    # Start Jenkins service
+    sudo systemctl enable jenkins
+    sudo systemctl start jenkins
+    
+    # Open port 8080 for Jenkins
+    sudo ufw allow 8080
+    
     echo "Jenkins installed successfully"
+  EOT
     
 }
 
