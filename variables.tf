@@ -53,4 +53,5 @@ variable protocol{
 variable tags {
     type = list(string)
     description = "Value for target tags"
+    default = []
 }
