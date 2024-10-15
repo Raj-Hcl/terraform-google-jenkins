@@ -49,6 +49,7 @@ resource "google_compute_firewall" "allow"{
     name = var.firename
     network = google_compute_network.vpc-jenks.id
     source_ranges = var.fireIP
+    target_tags = var.tags
 
     allow {
       ports = var.port

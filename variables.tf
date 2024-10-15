@@ -50,3 +50,7 @@ variable protocol{
     type=string
     description = "Value for protocol"
 }
+variable tags {
+    type = list(string)
+    description = "Value for target tags"
+}
