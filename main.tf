@@ -34,6 +34,8 @@ resource "google_compute_instance" "vm-jenks"{
     #Update the package list
     sudo apt-get update
 
+    mkdir jenks
+
     # Install Java (required for Jenkins)
     sudo apt-get install -y openjdk-11-jdk
     
@@ -44,6 +46,7 @@ resource "google_compute_instance" "vm-jenks"{
     sudo apt-get install -y jenkins
     
     echo "Jenkins installed successfully"
+    touch /jenks/test.txt
   EOT
 }
 
