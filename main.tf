@@ -1,18 +1,19 @@
 resource "google_compute_network" "vpc-jenks"{
-    name = var.vpcname
+    name                    = var.vpcname
+    auto_create_subnetworks = false
 
 }
 resource "google_compute_subnetwork" "mysubnet"{
-    name = var.subname
+    name          = var.subname
     ip_cidr_range = var.subrange
-    region = var.region
-    network = google_compute_network.vpc-jenks.id
+    region        = var.region
+    network       = google_compute_network.vpc-jenks.id
 }
 
 resource "google_compute_instance" "vm-jenks"{
-    name = var.myname
+    name         = var.myname
     machine_type = var.mymachine
-    zone = var.myzone
+    zone         = var.myzone
 
     boot_disk {
       initialize_params {
@@ -46,13 +47,13 @@ resource "google_compute_instance" "vm-jenks"{
 }
 
 resource "google_compute_firewall" "allow"{
-    name = var.firename
-    network = google_compute_network.vpc-jenks.id
+    name          = var.firename
+    network       = google_compute_network.vpc-jenks.id
     source_ranges = var.fireIP
-    target_tags = var.tags
+    target_tags   = var.tags
 
     allow {
-      ports = var.port
+      ports    = var.port
       protocol = var.protocol
     }
 }
