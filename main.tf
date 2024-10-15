@@ -29,8 +29,7 @@ resource "google_compute_instance" "vm-jenks"{
       }
     }
 
-    metadata_startup_script = <<-EOT
-    #!/bin/bash
+    metadata_startup_script = 
     #Update the package list
     sudo apt-get update
 
@@ -46,8 +45,7 @@ resource "google_compute_instance" "vm-jenks"{
     sudo apt-get install -y jenkins
     
     echo "Jenkins installed successfully"
-    touch /jenks/test.txt
-  EOT
+    
 }
 
 resource "google_compute_firewall" "allow"{
