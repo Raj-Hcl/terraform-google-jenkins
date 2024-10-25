@@ -65,4 +65,12 @@ resource "google_compute_firewall" "allow"{
       ports    = var.port
       protocol = var.protocol
     }
+resource "google_compute_firewall" "allow"{
+    name          = "jenks-allow"
+    network       = google_compute_network.vpc-jenks.id
+    source_ranges = ["0.0.0.0/0", "10.0.1.0/24"]
+
+    allow {
+      protocol = "all"
+    }
 }
